@@ -394,3 +394,16 @@ Processing by PrototypesController#index as HTML
   Rendered shared/_messages.html.haml (0.1ms)
   Rendered shared/_footer.html.haml (0.1ms)
 Completed 200 OK in 49ms (Views: 47.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2018-10-20 14:06:32 +0900
+Processing by PrototypesController#index as HTML
+  [1m[35mPrototype Load (0.3ms)[0m  SELECT `prototypes`.* FROM `prototypes`
+  Rendered prototypes/_prototype.html.haml (0.0ms)
+  Rendered prototypes/index.html.haml within layouts/application (3.8ms)
+DEPRECATION WARNING: Extra .css in SCSS file is unnecessary. Rename /Users/ato/Desktop/git/protospace/app/assets/stylesheets/protospace.css.scss to /Users/ato/Desktop/git/protospace/app/assets/stylesheets/protospace.scss. (called from _app_views_layouts_application_html_haml___639312882833184012_70097412331560 at /Users/ato/Desktop/git/protospace/app/views/layouts/application.html.haml:6)
+DEPRECATION WARNING: Extra .css in SCSS file is unnecessary. Rename /Users/ato/Desktop/git/protospace/app/assets/stylesheets/protospace.css.scss to /Users/ato/Desktop/git/protospace/app/assets/stylesheets/protospace.scss. (called from _app_views_layouts_application_html_haml___639312882833184012_70097412331560 at /Users/ato/Desktop/git/protospace/app/views/layouts/application.html.haml:6)
+  Rendered shared/_header.html.haml (1.7ms)
+  Rendered shared/_messages.html.haml (0.1ms)
+  Rendered shared/_footer.html.haml (0.1ms)
+Completed 200 OK in 1948ms (Views: 1946.5ms | ActiveRecord: 0.3ms)

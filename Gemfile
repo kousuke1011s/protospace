@@ -25,4 +25,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+
+  gem 'browser_sync_rails'
 end
+
+gem "rails_12factor", :group => :production
