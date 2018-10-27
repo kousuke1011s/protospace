@@ -1,4 +1,15 @@
 .col-sm-4.col-md-3.proto-content
+
+  -if current_page? user_path(prototype.user)
+    .dropdown.drop_menu_location
+      %button.btn.btn-default.dropdown-toggle#dropdownMenu{"data-toggle" => "dropdown"}
+        Action
+      %ul.dropdown-menu{ aria: {labelledby: "dropdownMenu1"}}
+        %li
+          = link_to 'Delite', prototype_path(prototype), method: :delete
+        %li
+          = link_to 'Edit', prototype_path, method: :patch
+
   .thumbnail
     = link_to image_tag(prototype.set_main_thumbnail), prototype_path(prototype)
     .caption
@@ -9,8 +20,3 @@
           = link_to prototype.user.name, user_path(prototype.user)
         .proto-posted
           = prototype.posted_date
-      .proto-buttons
-        .proto-user
-          = link_to 'Delite', prototype_path, method: :delete
-        .proto-posted
-          = link_to 'Edit', user_path(prototype.user)

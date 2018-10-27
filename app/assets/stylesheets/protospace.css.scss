@@ -275,7 +275,7 @@ body {
   background-position:  center 92px;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size:  100% auto;
+  background-size: cover;
   padding: 80px 0;
   margin-bottom: 0;
 }
@@ -633,4 +633,13 @@ body {
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
+}
+.c-flex {
+  display: flex;
+}
+.is-center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
 }

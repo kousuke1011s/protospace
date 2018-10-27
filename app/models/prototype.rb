@@ -18,8 +18,7 @@ class Prototype < ActiveRecord::Base
   end
 
   def set_main_thumbnail
-    #要修正
-    # captured_images.main.first.content
+    captured_images.main.first.content
   end
 
   def posted_date
