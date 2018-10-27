@@ -9,3 +9,8 @@
           = link_to prototype.user.name, user_path(prototype.user)
         .proto-posted
           = prototype.posted_date
+      .proto-buttons
+        .proto-user
+          = link_to 'Delite', prototype_path, method: :delete
+        .proto-posted
+          = link_to 'Edit', user_path(prototype.user)
