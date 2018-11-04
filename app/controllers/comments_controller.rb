@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.prototype_id = params[:prototype_id]
     if @comment.save
-      render :index
+      render :index #index.js.erb
     end
   end
 
