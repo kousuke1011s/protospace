@@ -29,4 +29,8 @@ group :development do
   gem 'browser_sync_rails'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 gem "rails_12factor", :group => :production
