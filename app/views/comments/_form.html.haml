@@ -1,0 +1,5 @@
+.comment-form
+  -if user_signed_in?
+    = form_for [prototype, comment], data: { remote: true } do |f|
+      = f.text_area :comment, placeholder: "input a comment", autofocus: true, required: true
+      = f.submit "Comment", id: "button", class: "send-button"
