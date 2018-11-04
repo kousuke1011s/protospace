@@ -1,0 +1,17 @@
+- comments.each do |comment|
+  .comment-area
+    .user-photo
+      photo
+      = image_tag(comment.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+    .user-name
+      name
+      = comment.user.name
+    .comment
+      comment
+      -unless current_user == comment.user
+        = comment.comment
+      -else
+        = form_for [comment.prototype, comment], data: { remote: true } do |f|
+          = f.text_area :comment, placeholder: "#{comment.comment}", autofocus: true, required: true
+          = f.submit "更新", id: "button", class: "send-button"
+        = link_to "削除", prototype_comment_path(comment.prototype, comment), method: :delete, remote: true
