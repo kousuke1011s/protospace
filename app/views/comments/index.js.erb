@@ -1,0 +1,2 @@
+$("textarea").val('');
+$("#comments").html("<%= j(render partial: 'comments/index', locals: { comments: @comment.prototype.comments.order(id: "DESC") })%>");
