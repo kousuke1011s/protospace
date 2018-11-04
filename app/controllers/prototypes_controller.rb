@@ -17,7 +17,7 @@ class PrototypesController < ApplicationController
     else
       flash.now[:error] = 'YNew prototype was unsuccessfully created'
       render :new
-     end
+    end
   end
 
   def edit
@@ -32,6 +32,8 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @prototype.comments.order(id: "DESC")
   end
 
   def destroy
