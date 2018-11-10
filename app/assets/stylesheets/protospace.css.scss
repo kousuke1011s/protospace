@@ -9,9 +9,7 @@ body {
   font-size: 14px;
   line-height: 1.4;
   color: #212121 ;
-
   overflow-x: hidden;
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -418,6 +416,17 @@ body {
     height: 500px;
     position: relative;
     margin-bottom: 20px;
+    overflow: hidden;
+
+    img {
+      max-height: 100%;
+      width: auto;
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
 
     input {
       position: absolute;
@@ -440,6 +449,16 @@ body {
       background: image-url("noimage.png") #fff no-repeat center center;
       height: 200px;
       position: relative;
+      overflow: hidden;
+
+      img {
+        max-height: 100%;
+        width: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
 
       input {
         position: absolute;

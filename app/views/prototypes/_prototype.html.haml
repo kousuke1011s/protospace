@@ -8,8 +8,7 @@
         %li
           = link_to 'Delite', prototype_path(prototype), method: :delete
         %li
-          = link_to 'Edit', prototype_path, method: :patch
-
+          = link_to 'Edit', edit_prototype_path(prototype.id)
   .thumbnail
     = link_to image_tag(prototype.set_main_thumbnail), prototype_path(prototype)
     .caption
@@ -20,8 +19,3 @@
           = link_to prototype.user.name, user_path(prototype.user)
         .proto-posted
           = prototype.posted_date
-      .proto-buttons
-        / .proto-user
-        /   = link_to 'Delite', prototype_path, method: :delete
-        .proto-posted
-          = link_to 'Edit', edit_prototype_path(prototype.id)
