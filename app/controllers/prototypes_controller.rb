@@ -15,19 +15,23 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      flash.now[:error] = 'YNew prototype was unsuccessfully created'
+      flash.now[:error] = 'New prototype was unsuccessfully created'
       render :new
     end
   end
 
   def edit
+    @main = @prototype.captured_images.main
+    @sub = @prototype.captured_images.sub
   end
 
   def update
+    @prototype.update(prototype_params)
     if @prototype.update(prototype_params)
-      redirect_to "/" ,notice: 'updated now!'
+      redirect_to prototype_path, notice: 'Updated now!'
     else
-      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
+      flash.now[:error] = 'Prototype was unsuccessfully updated'
+      render :edit
     end
   end
 
@@ -38,14 +42,13 @@ class PrototypesController < ApplicationController
 
   def destroy
     @prototype.destroy
-    redirect_to :root, notice: 'prototype was successfully destroyed.'
+    redirect_to :root, notice: 'Prototype was successfully destroyed.'
   end
 
   private
 
   def set_prototype
     @prototype = Prototype.find(params[:id])
-
   end
 
   def prototype_params
@@ -54,7 +57,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:content, :status, :id]
     )
   end
 end
