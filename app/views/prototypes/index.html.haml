@@ -16,6 +16,8 @@
   .row
     = render partial: 'prototypes/prototype', collection: @prototypes
 
+    = render partial: 'likes/like', locals: { prototype: @prototype, likes: @likes}
+
 .text-center
   %ul.pagination
     %li.disabled
