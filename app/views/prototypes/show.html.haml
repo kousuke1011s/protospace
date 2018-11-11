@@ -37,10 +37,10 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+/
+  .comment-number
+    Comments(#{@prototype.comments.length})
 
-.comment-number
-  Comments(#{@prototype.comments.length})
-
-#comments
-  = render partial: "comments/index", locals: { comments: @comments }
-= render partial: "comments/form", locals: { prototype: @prototype, comment: @comment}
+  #comments
+    = render partial: "comments/index", locals: { comments: @comments }
+  = render partial: "comments/form", locals: { prototype: @prototype, comment: @comment}

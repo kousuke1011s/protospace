@@ -21,12 +21,10 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @main = @prototype.captured_images.main
-    @sub = @prototype.captured_images.sub
+    @prototype.captured_images.build
   end
 
   def update
-    @prototype.update(prototype_params)
     if @prototype.update(prototype_params)
       redirect_to prototype_path, notice: 'Updated now!'
     else
