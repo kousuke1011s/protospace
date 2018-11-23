@@ -38,5 +38,17 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, require: true, placeholder: "Input Concept"
+        .col-md-12
+          %h4 Tag List
+          .tag-area
+            %ul.row#prototype-tags
+            = hidden_field_tag :tag_hidden,@tag_list
+            %ul.row.placeholders
+              %li
+                ex) Web
+              %li
+                ex) Rails
+              %li
+                ex) UI/UX
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"

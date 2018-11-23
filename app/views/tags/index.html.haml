@@ -1,0 +1,15 @@
+= render "layouts/jumbotron"
+
+= render "layouts/filter_nav"
+
+.container.proto-list
+  .row
+    - @tags.each do |tag|
+      .col-sm-4.col-md-3.proto-content
+        = link_to tag_path(tag), class: 'tag-item' do
+          .btn.btn-tag
+            = tag.tag
+          .tag-meta
+            .label.label-default.tag-list-number
+              = tag.prototypes.length
+              %i Projects

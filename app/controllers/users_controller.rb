@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @prototypes = @user.prototypes
+    @prototypes = @user.prototypes.order("created_at DESC").page(params[:page]).per(12)
   end
 
   def edit

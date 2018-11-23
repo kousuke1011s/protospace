@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :update, :edit, :destroy]
 
   def index
-    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(4)
+    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(12)
   end
 
   def new
@@ -12,7 +12,9 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(prototype_params)
+    tag_list = params[:tag_list].split(",")
     if @prototype.save
+      @prototype.save_tags(tag_list)
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       flash.now[:error] = 'New prototype was unsuccessfully created'
@@ -22,10 +24,13 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype.captured_images.build
+    @tag_list = @prototype.tags.pluck(:tag).join(",")
   end
 
   def update
-    if @prototype.update(prototype_params)
+    tag_list = params[:tag_list].split(",")
+    if @prototype.update_attributes(prototype_params)
+      @prototype.save_tags(tag_list)
       redirect_to prototype_path, notice: 'Updated now!'
     else
       flash.now[:error] = 'Prototype was unsuccessfully updated'
@@ -40,7 +45,7 @@ class PrototypesController < ApplicationController
 
   def destroy
     @prototype.destroy
-    redirect_to :root, notice: 'Prototype was successfully destroyed.'
+    redirect_to user_path(current_user), notice: 'Prototype was successfully destroyed.'
   end
 
   private

@@ -3,8 +3,12 @@
 = render "layouts/filter_nav"
 
 .container.proto-list
+  .tag-item
+    .btn-tag
+      = @tag.tag
+    .tag-meta
+      .label.label-default.tag-list-number
+        = @tag.prototypes.length
+        %i Projects
   .row
     = render partial: 'prototypes/prototype', collection: @prototypes
-
-.text-center
-  = paginate(@prototypes)
