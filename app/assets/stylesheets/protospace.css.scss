@@ -443,6 +443,7 @@ body {
     position: relative;
     margin-bottom: 20px;
     overflow: hidden;
+		padding: 10px 15px;
 
     img {
       max-height: 100%;
@@ -466,7 +467,12 @@ body {
       cursor: pointer;
     }
   }
-
+	.img-preview {
+		height: 100%;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: contain;
+	}
   .list-group-item {
     border: 0;
     margin-bottom: 20px;

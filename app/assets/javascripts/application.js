@@ -16,4 +16,5 @@
 //= require tag-it
 //= require turbolinks
 //= require bootstrap
+//= require zoom
 //= require_tree .

@@ -10,27 +10,28 @@
       .row
         .col-md-12
           %h4 Main Thumbnail
-          .cover-image-upload#main_image_uploader
-            = f.fields_for :captured_images, @prototype.captured_images.main do |image|
-              = image_tag image.object.content
-              = image.file_field :content
-              = image.hidden_field :status, value: "main"
+          = f.fields_for :captured_images, @prototype.captured_images.main do |image|
+            .cover-image-upload#main_image_uploader
+              .img-preview.js-img-preview{style: "background-image: url(#{image.object.content})"}
+                = image.file_field :content, class: 'js-imgfile-uploader'
+                = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
             - @prototype.captured_images.sub.each do |i|
               %li.list-group-item.col-md-4
-                .image-upload
-                  = f.fields_for :captured_images, i do |image|
-                    = image_tag image.object.content
-                    = image.file_field :content
-                    = image.hidden_field :status, value: "sub"
+                = f.fields_for :captured_images, i do |image|
+                  .image-upload
+                    .img-preview.js-img-preview{style: "background-image: url(#{image.object.content})"}
+                      = image.file_field :content, class: 'js-imgfile-uploader'
+                      = image.hidden_field :status, value: "sub"
             - (3 - @prototype.captured_images.sub.length).times do
               %li.list-group-item.col-md-4
                 .image-upload
-                  = f.fields_for :captured_images do |image|
-                    = image.file_field :content
-                    = image.hidden_field :status, value: "sub"
+                  .img-preview.js-img-preview
+                    = f.fields_for :captured_images do |image|
+                      = image.file_field :content, class: 'js-imgfile-uploader'
+                      = image.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12
           %h4 Catch Copy
