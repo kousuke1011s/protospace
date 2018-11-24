@@ -2,7 +2,7 @@
 
 = render "layouts/filter_nav"
 
-.container.proto-list
+.container
   .tag-item
     .btn-tag
       = @tag.tag
@@ -10,5 +10,6 @@
       .label.label-default.tag-list-number
         = @tag.prototypes.length
         %i Projects
-  .row
-    = render partial: 'prototypes/prototype', collection: @prototypes
+.container.proto-list.js-masonry
+  = render partial: 'prototypes/prototype', collection: @prototypes
+= paginate(@prototypes)

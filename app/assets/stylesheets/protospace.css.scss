@@ -816,3 +816,15 @@ a.tag-item {
 .btn-index:hover {
   color: #aaa !important;
 }
+.proto-content {
+	width: 280px;
+}
+.js-masonry {
+	min-height: calc(100vh - 90px);
+}
+.dropdown.drop_menu_location {
+	position: absolute;
+	z-index: 5;
+	top: 4px;
+	left: 4px;
+}

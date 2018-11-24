@@ -37,7 +37,7 @@
       %ul.proto-tag-list.list-inline
         - @prototype.tags.each do |t|
           %li
-            %a{href: "#", class: "btn btn-default"}
+            = link_to tag_path(t), class: 'btn btn-default' do
               = t.tag
   .comment-number
     Comments(#{@prototype.comments.length})

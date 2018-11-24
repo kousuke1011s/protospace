@@ -2,9 +2,7 @@
 
 = render "layouts/filter_nav"
 
-.container.proto-list
-  .row
-    = render partial: 'prototypes/prototype', collection: @prototypes
+.container.proto-list.js-masonry
+  = render partial: 'prototypes/prototype', collection: @prototypes
 
-.text-center
-  = paginate(@prototypes)
+= paginate(@prototypes)

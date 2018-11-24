@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @prototypes = @tag.prototypes
+    @prototypes = @tag.prototypes.page(params[:page]).per(12)
   end
 
   private

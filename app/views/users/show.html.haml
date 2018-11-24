@@ -18,8 +18,8 @@
           .col-md-6
             %h4 Occupation
             %p= @user.occupation
-.container.proto-list
-  .row
-    = render partial: 'prototypes/prototype', collection: @prototypes
-.text-center
-  = paginate(@prototypes)
+            
+.container.proto-list.js-masonry
+  = render partial: 'prototypes/prototype', collection: @prototypes
+
+= paginate(@prototypes)
