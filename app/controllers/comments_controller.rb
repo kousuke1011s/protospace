@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:update, :destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :move_to_sign_in
-  before_action :confirm_current_user, only: [:update, :destroy]
+  before_action :confirm_current_user, only: [:edit, :update, :destroy]
 
   def create
     @comment = Comment.new(comment_params)
@@ -10,6 +10,10 @@ class CommentsController < ApplicationController
     if @comment.save
       render :index #index.js.erb
     end
+  end
+
+  def edit
+    render :edit
   end
 
   def update

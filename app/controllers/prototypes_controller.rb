@@ -40,7 +40,7 @@ class PrototypesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @prototype.comments.order(id: "DESC")
+    @comments = @prototype.comments.order(id: "DESC").includes(:user)
   end
 
   def destroy

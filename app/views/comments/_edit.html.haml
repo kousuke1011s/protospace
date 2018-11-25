@@ -1,0 +1,3 @@
+= form_for [comment.prototype, comment], data: { remote: true } do |f|
+  = f.text_area :comment, placeholder: "#{comment.comment}", autofocus: true, required: true
+  = f.submit "更新", id: "button", class: "send-button"

@@ -1,0 +1,2 @@
+var comment_id = <%= @comment.id %>;
+$('a#' + comment_id).parent().html("<%= j(render partial: 'comments/edit', locals: { comment: @comment })%>");
