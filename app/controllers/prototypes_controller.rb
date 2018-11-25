@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :update, :edit, :destroy]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(12)
   end
 
   def new
@@ -12,38 +12,46 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(prototype_params)
+    tag_list = params[:tag_list].split(",")
     if @prototype.save
+      @prototype.save_tags(tag_list)
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      flash.now[:error] = 'YNew prototype was unsuccessfully created'
+      flash.now[:error] = 'New prototype was unsuccessfully created'
       render :new
-     end
+    end
   end
 
   def edit
+    @prototype.captured_images.build
+    @tag_list = @prototype.tags.pluck(:tag).join(",")
   end
 
   def update
-    if @prototype.update(prototype_params)
-      redirect_to "/" ,notice: 'updated now!'
+    tag_list = params[:tag_list].split(",")
+    if @prototype.update_attributes(prototype_params)
+      @prototype.save_tags(tag_list)
+      redirect_to prototype_path, notice: 'Updated now!'
     else
-      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
+      flash.now[:error] = 'Prototype was unsuccessfully updated'
+      render :edit
     end
   end
 
   def show
+    @comment = Comment.new
+    @comments = @prototype.comments.order(id: "DESC")
   end
 
   def destroy
     @prototype.destroy
-    redirect_to :root, notice: 'prototype was successfully destroyed.'
+    redirect_to user_path(current_user), notice: 'Prototype was successfully destroyed.'
   end
 
   private
 
   def set_prototype
     @prototype = Prototype.find(params[:id])
-
   end
 
   def prototype_params
@@ -52,7 +60,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:content, :status, :id]
     )
   end
 end

@@ -1,4 +1,4 @@
-.col-sm-4.col-md-3.proto-content
+.proto-content
   -if current_page? user_path(prototype.user)
     .dropdown.drop_menu_location
       %button.btn.btn-default.dropdown-toggle#dropdownMenu{"data-toggle" => "dropdown"}
@@ -7,15 +7,20 @@
         %li
           = link_to 'Delite', prototype_path(prototype), method: :delete
         %li
-          = link_to 'Edit', edit_prototype_path(prototype.id)
-
+          = link_to 'Edit', edit_prototype_path(prototype)
   .thumbnail
-    = link_to image_tag(prototype.set_main_thumbnail), prototype_path(prototype)
+    = link_to image_tag(prototype.set_main_thumbnail), prototype_path(prototype), class: 'thumb-link'
     .caption
       %h3
         = prototype.title
       .proto-meta
         .proto-user
+          by
           = link_to prototype.user.name, user_path(prototype.user)
         .proto-posted
           = prototype.posted_date
+      %ul.proto-tag-list.list-inline
+        - prototype.tags.each do |t|
+          %li
+            = link_to tag_path(t), class: 'btn btn-default' do
+              = t.tag

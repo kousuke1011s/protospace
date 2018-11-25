@@ -13,14 +13,18 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
+    .col-md-6.text-right
+      = render 'likes/like_links', prototype: @prototype
   .row
     .col-md-9.image-box
-      = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+      = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', data: { action: 'zoom'}, style: "margin: 0 auto;")
+
     .col-md-3
       %ul.proto-sub-list.list-group
         - @prototype.captured_images.sub.each do |image|
           %li.list-group-item
-            = image_tag(image.content, class: 'img-responsive')
+            = image_tag(image.content, class: 'img-responsive', data: { action: 'zoom'})
+
   .row.proto-description
     .col-md-3
       %h4 Catch Copy
@@ -33,7 +37,7 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        %li
-          %a{href: "#", class: "btn btn-default"} iPad
-        %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+        - @prototype.tags.each do |t|
+          %li
+            = link_to tag_path(t), class: 'btn btn-default' do
+              = t.tag
