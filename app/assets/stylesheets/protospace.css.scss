@@ -832,7 +832,7 @@ a.tag-item {
   &:before {
     content: "";
     display: inline-block;
-    background: url(/assets/icon_heart_red.svg) no-repeat;
+    background: image-url(/assets/icon_heart_red.svg) no-repeat;
     width: 22px;
     height: 16px;
     vertical-align: middle;
@@ -840,7 +840,7 @@ a.tag-item {
   }
   &.ico-heart-empty {
     &:before {
-      background-image: url(/assets/icon_heart.svg);
+      background-image: image-url(/assets/icon_heart.svg);
     }
   }
 }
