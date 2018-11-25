@@ -3,6 +3,7 @@ class Prototype < ActiveRecord::Base
   has_many :prototype_tags, dependent: :destroy
   has_many :tags, through: :prototype_tags
   has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
   has_many :captured_images, dependent: :destroy
 

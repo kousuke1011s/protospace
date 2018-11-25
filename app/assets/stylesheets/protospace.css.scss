@@ -828,3 +828,22 @@ a.tag-item {
 	top: 4px;
 	left: 4px;
 }
+<<<<<<< HEAD
+=======
+.like-btn {
+  &:before {
+    content: "";
+    display: inline-block;
+    background: url(/assets/icon_heart_red.svg) no-repeat;
+    width: 22px;
+    height: 16px;
+    vertical-align: middle;
+    background-size: contain;
+  }
+  &.ico-heart-empty {
+    &:before {
+      background-image: url(/assets/icon_heart.svg);
+    }
+  }
+}
+>>>>>>> like-function
