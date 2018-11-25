@@ -830,18 +830,17 @@ a.tag-item {
 }
 .like-btn {
   &:before {
-    content: "";
-    display: inline-block;
-		background-image: image-url('/assets/icon_heart_red.svg');
-		background-repeat: no-repeat;
-    width: 22px;
-    height: 16px;
-    vertical-align: middle;
-    background-size: contain;
+		content: "\e005";
+		color: #D00101;
+		transition: .4s;
+		font-family: 'Glyphicons Halflings';
+		font-size: 115%;
+		display: inline-block;
+		vertical-align: middle;
   }
   &.ico-heart-empty {
-    &:before {
-      background-image: image-url('/assets/icon_heart.svg');
-    }
+		&:before {
+			color: #D7D7D7;
+		}
   }
 }
