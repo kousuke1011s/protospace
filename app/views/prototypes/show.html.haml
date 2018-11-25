@@ -44,4 +44,5 @@
 
   #comments
     = render partial: "comments/index", locals: { comments: @comments }
-  = render partial: "comments/form", locals: { prototype: @prototype, comment: @comment}
+  #comment-form
+    = render partial: "comments/form", locals: { prototype: @prototype, comment: @comment}
