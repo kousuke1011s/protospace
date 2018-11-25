@@ -8,10 +8,9 @@
       = comment.user.name
     .comment
       comment
-      -unless current_user == comment.user
-        = comment.comment
-      -else
-        = form_for [comment.prototype, comment], data: { remote: true } do |f|
-          = f.text_area :comment, placeholder: "#{comment.comment}", autofocus: true, required: true
-          = f.submit "更新", id: "button", class: "send-button"
-        = link_to "削除", prototype_comment_path(comment.prototype, comment), method: :delete, remote: true
+      = comment.comment
+      -if comment.user.id == current_user.id
+        #comment-edit-button
+          = link_to "コメントを編集する", edit_prototype_comment_path(comment.prototype, comment), remote: true, id: "#{comment.id}"
+        #comment-delete-button
+          = link_to "削除", prototype_comment_path(comment.prototype, comment), method: :delete, remote: true
